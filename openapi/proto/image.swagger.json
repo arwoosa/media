@@ -1,0 +1,448 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/image.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "MediaService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/media/image/_batch_delete": {
+      "post": {
+        "summary": "批次刪除圖片",
+        "operationId": "MediaService_BatchDelete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/media_serviceBatchDeleteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/media_serviceBatchDeleteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MediaService"
+        ]
+      }
+    },
+    "/media/image/_complete": {
+      "post": {
+        "summary": "檢查圖片上傳狀態",
+        "operationId": "MediaService_Complete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/media_serviceStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/media_serviceStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MediaService"
+        ]
+      }
+    },
+    "/media/image/signed-url": {
+      "delete": {
+        "summary": "清除暫存",
+        "operationId": "MediaService_Clear",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/media_serviceClearResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "MediaService"
+        ]
+      }
+    },
+    "/media/image/signed-url/_batch": {
+      "post": {
+        "summary": "批次取得上傳URL",
+        "operationId": "MediaService_BatchUpload",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/media_serviceUploadResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/media_serviceUploadRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MediaService"
+        ]
+      }
+    },
+    "/media/image/{id}": {
+      "get": {
+        "summary": "取得圖片URI",
+        "operationId": "MediaService_GetImageURI",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/media_serviceImageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "variant",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MediaService"
+        ]
+      }
+    },
+    "/media/image/{imageId}": {
+      "delete": {
+        "summary": "刪除圖片",
+        "operationId": "MediaService_Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/media_serviceDeleteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "imageId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MediaService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "media_serviceBatchDeleteRequest": {
+      "type": "object",
+      "properties": {
+        "imageIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "批次刪除圖片請求"
+    },
+    "media_serviceBatchDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "批次刪除圖片響應"
+    },
+    "media_serviceClearResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "清除暫存響應"
+    },
+    "media_serviceDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "刪除圖片響應"
+    },
+    "media_serviceImageFormat": {
+      "type": "string",
+      "enum": [
+        "NOT_SUPPORT",
+        "PNG",
+        "GIF",
+        "JPEG",
+        "WEBP",
+        "SVG",
+        "HEIC"
+      ],
+      "default": "NOT_SUPPORT",
+      "title": "圖片格式枚舉"
+    },
+    "media_serviceImageMetadata": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "integer",
+          "format": "int64",
+          "title": "寬度必須大於0且小於10000"
+        },
+        "height": {
+          "type": "integer",
+          "format": "int64",
+          "title": "高度必須大於0且小於10000"
+        },
+        "format": {
+          "$ref": "#/definitions/media_serviceImageFormat",
+          "title": "格式不能是NOT_SUPPORT"
+        },
+        "size": {
+          "type": "string",
+          "format": "uint64",
+          "title": "大小必須大於0且小於10MB"
+        },
+        "uploadTime": {
+          "type": "string",
+          "title": "RFC3339格式"
+        }
+      },
+      "title": "圖片元數據"
+    },
+    "media_serviceImageResponse": {
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": "string"
+        }
+      },
+      "title": "取得圖片URI響應"
+    },
+    "media_serviceImageStatus": {
+      "type": "object",
+      "properties": {
+        "imageId": {
+          "type": "string",
+          "title": "必須非空且只能包含字母、數字和連字符"
+        },
+        "metadata": {
+          "$ref": "#/definitions/media_serviceImageMetadata",
+          "title": "必須存在"
+        },
+        "variants": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "必須至少有一個元素"
+        }
+      }
+    },
+    "media_serviceSignedUrl": {
+      "type": "object",
+      "properties": {
+        "imageId": {
+          "type": "string",
+          "title": "必須非空且只能包含字母、數字和連字符"
+        },
+        "signedUrl": {
+          "type": "string",
+          "title": "必須非空且必須是HTTP或HTTPS URL"
+        }
+      }
+    },
+    "media_serviceStatusRequest": {
+      "type": "object",
+      "properties": {
+        "imageIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "圖片狀態請求"
+    },
+    "media_serviceStatusResponse": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/media_serviceImageStatus"
+          }
+        }
+      },
+      "title": "圖片狀態響應"
+    },
+    "media_serviceUploadImage": {
+      "type": "object",
+      "properties": {
+        "contentType": {
+          "$ref": "#/definitions/media_serviceImageFormat"
+        },
+        "size": {
+          "type": "string",
+          "format": "uint64",
+          "title": "大小必須大於0且小於10MB"
+        },
+        "width": {
+          "type": "integer",
+          "format": "int64",
+          "title": "寬度必須大於0且小於10000"
+        },
+        "height": {
+          "type": "integer",
+          "format": "int64",
+          "title": "高度必須大於0且小於10000"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "title": "緯度"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "title": "經度"
+        }
+      }
+    },
+    "media_serviceUploadRequest": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/media_serviceUploadImage"
+          }
+        }
+      },
+      "title": "圖片上傳請求"
+    },
+    "media_serviceUploadResponse": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/media_serviceSignedUrl"
+          }
+        }
+      },
+      "title": "圖片上傳響應"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

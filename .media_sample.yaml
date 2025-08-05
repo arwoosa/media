@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+log:
+  dev: true
+  level: "debug"
+
+cloudflare:
+  account_id: ""
+  hash: ""
+  delivery_url: ""
+  api_token: ""
+  expiry_duration: 10m # signed url expiry duration
+
+database:
+  uri: "mongodb://mongodb.dev.orb.local:27017"
+  db: "media_service"
+  max_conn_idle_time: 10m
+  max_pool_size: 50
+  min_pool_size: 10
+
+relation:
+  write_uri: "192.168.1.123:4467"
+  read_uri: "192.168.1.123:4466"
+
+cache:
+  address: "redis.dev.orb.local:6379"
+  db: 0

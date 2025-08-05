@@ -1,0 +1,173 @@
+syntax = "proto3";
+
+package media_service;
+
+option go_package = "internal/pb/image";
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+import "validate/validate.proto";
+
+// 圖片格式枚舉
+enum ImageFormat {
+  NOT_SUPPORT = 0;
+  PNG = 1;
+  GIF = 2;
+  JPEG = 3;
+  WEBP = 4;
+  SVG = 5;
+  HEIC = 6; 
+}
+
+// 錯誤代碼枚舉
+enum ErrorCode {
+  INVALID_CONTENT_TYPE = 0;
+  TOO_MANY_IMAGES = 1;
+  INVALID_CREDENTIALS = 2;
+  RATE_LIMIT_EXCEEDED = 3;
+  STORAGE_ERROR = 4;
+  CLOUDFLARE_API_ERROR = 5;
+  DATABASE_ERROR = 6;
+  IMAGE_NOT_FOUND = 7;
+  COOKIE_NOT_FOUND = 8;
+}
+
+// 圖片元數據
+message ImageMetadata {
+  uint32 width = 1 [(validate.rules).uint32 = {gt: 0, lt: 10000}];  // 寬度必須大於0且小於10000
+  uint32 height = 2 [(validate.rules).uint32 = {gt: 0, lt: 10000}]; // 高度必須大於0且小於10000
+  ImageFormat format = 3 [(validate.rules).enum = {not_in: [0]}];  // 格式不能是NOT_SUPPORT
+  uint64 size = 4 [(validate.rules).uint64 = {gt: 0, lt: 10485760}]; // 大小必須大於0且小於10MB
+  string upload_time = 5 [(validate.rules).string = {pattern: "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"}];  // RFC3339格式
+}
+
+// 圖片上傳請求
+message UploadRequest {
+  repeated UploadImage images = 1 [(validate.rules).repeated = {min_items: 1, max_items: 10}];
+}
+
+message UploadImage {
+  ImageFormat content_type = 1 [(validate.rules).enum = {not_in: [0]}];
+  uint64 size = 2 [(validate.rules).uint64 = {gt: 0, lt: 10485760}]; // 大小必須大於0且小於10MB
+  uint32 width = 3 [(validate.rules).uint32 = {gt: 0, lt: 10000}];  // 寬度必須大於0且小於10000
+  uint32 height = 4 [(validate.rules).uint32 = {gt: 0, lt: 10000}]; // 高度必須大於0且小於10000
+  optional double latitude = 5 [(validate.rules).double = {gte: -90, lte: 90, ignore_empty: true}];   // 緯度
+  optional double longitude = 6 [(validate.rules).double = {gte: -180, lte: 180, ignore_empty: true}]; // 經度
+}
+
+// 圖片上傳響應
+message UploadResponse {
+  repeated SignedUrl images = 1;
+}
+
+message SignedUrl {
+  string image_id = 1 [(validate.rules).string = {min_len: 1, pattern: "^[a-zA-Z0-9-]+$"}];  // 必須非空且只能包含字母、數字和連字符
+  string signed_url = 2 [(validate.rules).string = {min_len: 1, pattern: "^https?://"}];  // 必須非空且必須是HTTP或HTTPS URL
+}
+
+// 圖片狀態請求
+message StatusRequest {
+  repeated string image_ids = 1 [(validate.rules).repeated = {min_items: 1, max_items: 10}];
+}
+
+// 圖片狀態響應
+message StatusResponse {
+  repeated ImageStatus images = 1;
+}
+
+message ImageStatus {
+  string image_id = 1 [(validate.rules).string = {min_len: 1, pattern: "^[a-zA-Z0-9-]+$"}];  // 必須非空且只能包含字母、數字和連字符
+  ImageMetadata metadata = 3 [(validate.rules).message = {required: true}];  // 必須存在
+  map<string, string> variants = 4 [(validate.rules).map = {min_pairs: 1}];  // 必須至少有一個元素
+}
+
+// 清除暫存請求
+message ClearRequest {}
+
+// 清除暫存響應
+message ClearResponse {
+  string message = 1;
+}
+
+// 刪除圖片請求
+message DeleteRequest {
+  string image_id = 1 [(validate.rules).string = {min_len: 1, pattern: "^[a-zA-Z0-9-]+$"}];
+}
+
+// 刪除圖片響應
+message DeleteResponse {
+  string message = 1;
+}
+
+// 批次刪除圖片請求
+message BatchDeleteRequest {
+  repeated string image_ids = 1 [(validate.rules).repeated = {min_items: 1, max_items: 10, items: {string: {min_len: 1, pattern: "^[a-zA-Z0-9-]+$"}}}];
+}
+
+// 批次刪除圖片響應
+message BatchDeleteResponse {
+  string message = 1;
+}
+
+// 取得圖片URI請求
+message ImageRequest {
+  string id = 1 [(validate.rules).string = {pattern: "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"}];
+  string variant = 2 [(validate.rules).string = {min_len: 1}];
+}
+
+// 取得圖片URI響應
+message ImageResponse {
+  string uri = 1;
+}
+
+
+// MediaService服務定義
+service MediaService {
+  // 批次取得上傳URL
+  rpc BatchUpload(UploadRequest) returns (UploadResponse) {
+    option (google.api.http) = {
+      post: "/media/image/signed-url/_batch"
+      body: "*"
+    };
+  }
+
+  // 檢查圖片上傳狀態
+  rpc Complete(StatusRequest) returns (StatusResponse) {
+    option (google.api.http) = {
+      post: "/media/image/_complete"
+      body: "*"
+    };
+  }
+
+  // 清除暫存
+  rpc Clear(ClearRequest) returns (ClearResponse) {
+    option (google.api.http) = {
+      delete: "/media/image/signed-url"
+    };
+  }
+
+  // 刪除圖片
+  rpc Delete(DeleteRequest) returns (DeleteResponse) {
+    option (google.api.http) = {
+      delete: "/media/image/{image_id}"
+    };
+  }
+
+  // 批次刪除圖片
+  rpc BatchDelete(BatchDeleteRequest) returns (BatchDeleteResponse) {
+    option (google.api.http) = {
+      post: "/media/image/_batch_delete"
+      body: "*"
+    };
+  }
+
+  // 取得圖片URI
+  rpc GetImageURI(ImageRequest) returns (ImageResponse) {
+    option (google.api.http) = {
+      get: "/media/image/{id}"
+    };
+  }
+
+  // 同步圖片計數(Cron Job使用)
+  rpc SyncImageCount(google.protobuf.Empty) returns (google.protobuf.Empty);
+}
