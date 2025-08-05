@@ -1,7 +1,7 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/arwoosa/vulpes v0.1.0-dev h1:nk1KQXVi4PF9+ztA6AsbB16z9kHam4W85pC/nCBo6HI=
-github.com/arwoosa/vulpes v0.1.0-dev/go.mod h1:oDnF7lb4x84983ftsReNI9KFzfRzhBs69u958z6pUQQ=
+github.com/arwoosa/vulpes v0.1.1-dev h1:ZyvpJK/+YAtPIOCeIW34RuHQ2rk++o+ko96Tu6qZaiE=
+github.com/arwoosa/vulpes v0.1.1-dev/go.mod h1:oDnF7lb4x84983ftsReNI9KFzfRzhBs69u958z6pUQQ=
 github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
 github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=

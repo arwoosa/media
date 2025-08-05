@@ -5,7 +5,7 @@ go 1.23.3
 // replace github.com/arwoosa/vulpes => ./pkg/vulpes
 
 require (
-	github.com/arwoosa/vulpes v0.1.0-dev
+	github.com/arwoosa/vulpes v0.1.1-dev
 	github.com/cloudflare/cloudflare-go/v4 v4.6.0
 	github.com/envoyproxy/protoc-gen-validate v1.2.1
 	github.com/golang/protobuf v1.5.4

@@ -33,6 +33,7 @@ The server can be started with either REST API or gRPC endpoints:
 		// initialize cache
 		err := cache.InitConnection(
 			cache.WithAddr(viper.GetString("cache.address")),
+			cache.WithPassword(viper.GetString("cache.password")),
 			cache.WithDb(viper.GetInt("cache.db")))
 		if err != nil {
 			log.Fatal(err.Error())
