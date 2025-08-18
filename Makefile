@@ -12,3 +12,6 @@ test:
 	docker run -it --rm 94peter/grpc-gateway-builder sh
 		echo $PATH         # 確保包含 /usr/local/bin/plugins
 		which protoc-gen-validate
+
+update-submodules:
+	git submodule update --init --recursive

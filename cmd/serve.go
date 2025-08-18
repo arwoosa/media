@@ -15,6 +15,7 @@ import (
 	"github.com/arwoosa/vulpes/ezgrpc"
 	"github.com/arwoosa/vulpes/log"
 	"github.com/arwoosa/vulpes/relation"
+
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -55,14 +56,16 @@ The server can be started with either REST API or gRPC endpoints:
 			log.Fatal(err.Error())
 		}
 		defer func() {
-			err = mgo.Close(mongoCtx)
+			closeCtx, cancel := context.WithTimeout(context.Background(), time.Minute)
+			defer cancel()
+			err = mgo.Close(closeCtx)
 			if err != nil {
 				log.Fatal(err.Error())
 			}
 		}()
 
 		// initialize mongo indexes
-		err = mgo.CreateIndexesIfNotExists(mongoCtx)
+		err = mgo.SyncIndexes(mongoCtx)
 		if err != nil {
 			log.Fatal(err.Error())
 		}
@@ -80,10 +83,6 @@ The server can be started with either REST API or gRPC endpoints:
 			ezgrpc.RedirectResponseOption,
 			ezgrpc.RedirectResponseModifier,
 		)
-
-		log.SetConfig(
-			log.WithDev(viper.GetBool("log.dev")),
-			log.WithLevel(viper.GetString("log.level")))
 
 		ctx, cancel := context.WithCancel(context.Background())
 		defer cancel()

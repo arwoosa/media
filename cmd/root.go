@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/arwoosa/vulpes/log"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -76,4 +77,12 @@ func initConfig() {
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
 	}
+
+	log.SetConfig(
+		log.WithDev(viper.GetBool("log.dev")),
+		log.WithLevel(viper.GetString("log.level")),
+		log.WithCallerSkip(1),
+		log.WithServiceName("media"),
+		log.WithEnv(viper.GetString("env")),
+	)
 }
