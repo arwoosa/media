@@ -7,3 +7,7 @@ services:
       - ${CONFIG_FILE}:/etc/media/config.yaml:ro
     command: ["serve","--config","/etc/media/config.yaml"]
     
+networks:
+  default:
+    name: oosa-network
+    external: true
