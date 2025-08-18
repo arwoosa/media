@@ -1,0 +1,9 @@
+service:
+  media:
+    image: sjc.vultrcr.com/oosa/media:dev
+    container_name: media
+    restart: always
+    volumes:
+      - ${CONFIG_FILE}:/etc/media/config.yaml:ro
+    cmd: ["serve","--config","/etc/media/config.yaml"]
+    
