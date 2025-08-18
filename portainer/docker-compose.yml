@@ -5,5 +5,5 @@ services:
     restart: always
     volumes:
       - ${CONFIG_FILE}:/etc/media/config.yaml:ro
-    cmd: ["serve","--config","/etc/media/config.yaml"]
+    command: ["serve","--config","/etc/media/config.yaml"]
     
