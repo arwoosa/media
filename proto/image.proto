@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package media_service;
+package mediaService;
 
 option go_package = "internal/pb/image";
 
@@ -121,8 +121,8 @@ message ImageResponse {
 }
 
 
-// MediaService服務定義
-service MediaService {
+// ImageService服務定義
+service ImageService {
   // 批次取得上傳URL
   rpc BatchUpload(UploadRequest) returns (UploadResponse) {
     option (google.api.http) = {

@@ -11,7 +11,7 @@ import (
 	"github.com/arwoosa/vulpes/db/cache"
 	"github.com/arwoosa/vulpes/db/mgo"
 	"github.com/arwoosa/vulpes/ezgrpc"
-	"github.com/arwoosa/vulpes/log"
+
 	"github.com/golang/protobuf/ptypes/empty"
 	"go.mongodb.org/mongo-driver/v2/bson"
 	"go.mongodb.org/mongo-driver/v2/mongo"
@@ -22,7 +22,7 @@ import (
 
 // imageServer 實作了 image.UnimplementedMediaServiceServer gRPC 服務。
 type imageServer struct {
-	image.UnimplementedMediaServiceServer
+	image.UnimplementedImageServiceServer
 }
 
 var ()
@@ -30,10 +30,10 @@ var ()
 func init() {
 	// 將 imageServer 注入到 ezgrpc 中，以便 gRPC 伺服器可以註冊它。
 	ezgrpc.InjectGrpcService(func(s grpc.ServiceRegistrar) {
-		image.RegisterMediaServiceServer(s, &imageServer{})
+		image.RegisterImageServiceServer(s, &imageServer{})
 	})
 	// 註冊 gRPC-Gateway 處理程序，將 HTTP 請求代理到 gRPC 服務。
-	ezgrpc.RegisterHandlerFromEndpoint(image.RegisterMediaServiceHandlerFromEndpoint)
+	ezgrpc.RegisterHandlerFromEndpoint(image.RegisterImageServiceHandlerFromEndpoint)
 }
 
 // signedUrlSlice 是 []*image.SignedUrl 的輔助類型，用於簡化操作。
@@ -114,7 +114,11 @@ func (s *imageServer) Complete(ctx context.Context, req *image.StatusRequest) (*
 	defer cancel()
 	images := cloudflare.GetImages(completeCtx, imageIds)
 	result := make([]*image.ImageStatus, len(imageIds))
-	docs := mgo.NewDocSlice()
+	bulk, err := mgo.NewBulkOperation(db.NewImage().C())
+	if err != nil {
+		return nil, mgo.ToStatus(err).Err()
+	}
+
 	for i, id := range imageIds {
 		saveImage := images[id].Image
 		myImage := db.NewImage(
@@ -127,7 +131,7 @@ func (s *imageServer) Complete(ctx context.Context, req *image.StatusRequest) (*
 			db.WithSize(saveImage.GetSize()),
 			db.WithLocation(saveImage.GetLongitude(), saveImage.GetLatitude()),
 		)
-		docs.Append(myImage)
+		bulk.InsertOne(myImage)
 		result[i] = &image.ImageStatus{
 			ImageId: id,
 			Metadata: &image.ImageMetadata{
@@ -142,11 +146,11 @@ func (s *imageServer) Complete(ctx context.Context, req *image.StatusRequest) (*
 	}
 
 	// 3. 存入資料庫
-	_, err = mgo.BatchSave(ctx, docs)
+
+	_, err = bulk.Execute(ctx)
 	if err != nil {
 		return nil, mgo.ToStatus(err).Err()
 	}
-	log.Info("save image to db", log.Int("count", len(docs)))
 
 	// 4. 建立關係
 	user, err := ezgrpc.GetUser(ctx)
@@ -193,7 +197,7 @@ func (s *imageServer) Delete(ctx context.Context, req *image.DeleteRequest) (*im
 		return nil, cloudflare.ToStatus(err).Err()
 	}
 	// 2. 刪除資料庫中的圖片
-	_, err = mgo.DeleteMany(ctx, db.ImageCollectionName, bson.D{{Key: "cloudflare_id", Value: req.GetImageId()}})
+	_, err = mgo.DeleteMany(ctx, db.NewImage(), bson.D{{Key: "cloudflare_id", Value: req.GetImageId()}})
 	if err != nil {
 		return nil, mgo.ToStatus(err).Err()
 	}
@@ -216,7 +220,7 @@ func (s *imageServer) BatchDelete(ctx context.Context, req *image.BatchDeleteReq
 		return nil, cloudflare.ToStatus(err).Err()
 	}
 	// 2. 刪除資料庫中的圖片
-	_, err = mgo.DeleteMany(ctx, db.ImageCollectionName, bson.D{{Key: "cloudflare_id", Value: bson.M{"$in": req.GetImageIds()}}})
+	_, err = mgo.DeleteMany(ctx, db.NewImage(), bson.D{{Key: "cloudflare_id", Value: bson.M{"$in": req.GetImageIds()}}})
 	if err != nil {
 		return nil, mgo.ToStatus(err).Err()
 	}
@@ -262,14 +266,22 @@ func (s *imageServer) GetImageURI(ctx context.Context, req *image.ImageRequest) 
 }
 
 func (s *imageServer) SyncImageCount(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	// random error
+	time.Sleep(time.Second * 2)
+
+	// if rand.New(rand.NewSource(time.Now().UnixNano())).Int()%2 == 0 {
+	// 	return nil, status.Error(codes.Internal, "Internal error")
+	// }
+	return &empty.Empty{}, nil
 	// 1. get all key from cache
 	err := cache.DeleteAfterScanExecuteInt(ctx, "*", func(key string, val int) error {
 		updateCtx, cancel := context.WithTimeout(ctx, time.Second*2)
 		defer cancel()
-		_, err := mgo.UpdateOneWithIncrFields(
+		fields := bson.D{{Key: "count", Value: val}}
+		_, err := mgo.UpdateOne(
 			updateCtx, db.NewImage(),
 			bson.D{{Key: "cloudflare_id", Value: key}},
-			bson.D{{Key: "count", Value: val}},
+			bson.D{{Key: "$inc", Value: fields}},
 		)
 		return err
 	})

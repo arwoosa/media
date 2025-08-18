@@ -6,7 +6,7 @@
   },
   "tags": [
     {
-      "name": "MediaService"
+      "name": "ImageService"
     }
   ],
   "consumes": [
@@ -19,12 +19,12 @@
     "/media/image/_batch_delete": {
       "post": {
         "summary": "批次刪除圖片",
-        "operationId": "MediaService_BatchDelete",
+        "operationId": "ImageService_BatchDelete",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/media_serviceBatchDeleteResponse"
+              "$ref": "#/definitions/mediaServiceBatchDeleteResponse"
             }
           },
           "default": {
@@ -40,24 +40,24 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/media_serviceBatchDeleteRequest"
+              "$ref": "#/definitions/mediaServiceBatchDeleteRequest"
             }
           }
         ],
         "tags": [
-          "MediaService"
+          "ImageService"
         ]
       }
     },
     "/media/image/_complete": {
       "post": {
         "summary": "檢查圖片上傳狀態",
-        "operationId": "MediaService_Complete",
+        "operationId": "ImageService_Complete",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/media_serviceStatusResponse"
+              "$ref": "#/definitions/mediaServiceStatusResponse"
             }
           },
           "default": {
@@ -73,24 +73,24 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/media_serviceStatusRequest"
+              "$ref": "#/definitions/mediaServiceStatusRequest"
             }
           }
         ],
         "tags": [
-          "MediaService"
+          "ImageService"
         ]
       }
     },
     "/media/image/signed-url": {
       "delete": {
         "summary": "清除暫存",
-        "operationId": "MediaService_Clear",
+        "operationId": "ImageService_Clear",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/media_serviceClearResponse"
+              "$ref": "#/definitions/mediaServiceClearResponse"
             }
           },
           "default": {
@@ -101,19 +101,19 @@
           }
         },
         "tags": [
-          "MediaService"
+          "ImageService"
         ]
       }
     },
     "/media/image/signed-url/_batch": {
       "post": {
         "summary": "批次取得上傳URL",
-        "operationId": "MediaService_BatchUpload",
+        "operationId": "ImageService_BatchUpload",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/media_serviceUploadResponse"
+              "$ref": "#/definitions/mediaServiceUploadResponse"
             }
           },
           "default": {
@@ -129,24 +129,24 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/media_serviceUploadRequest"
+              "$ref": "#/definitions/mediaServiceUploadRequest"
             }
           }
         ],
         "tags": [
-          "MediaService"
+          "ImageService"
         ]
       }
     },
     "/media/image/{id}": {
       "get": {
         "summary": "取得圖片URI",
-        "operationId": "MediaService_GetImageURI",
+        "operationId": "ImageService_GetImageURI",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/media_serviceImageResponse"
+              "$ref": "#/definitions/mediaServiceImageResponse"
             }
           },
           "default": {
@@ -171,19 +171,19 @@
           }
         ],
         "tags": [
-          "MediaService"
+          "ImageService"
         ]
       }
     },
     "/media/image/{imageId}": {
       "delete": {
         "summary": "刪除圖片",
-        "operationId": "MediaService_Delete",
+        "operationId": "ImageService_Delete",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/media_serviceDeleteResponse"
+              "$ref": "#/definitions/mediaServiceDeleteResponse"
             }
           },
           "default": {
@@ -202,13 +202,13 @@
           }
         ],
         "tags": [
-          "MediaService"
+          "ImageService"
         ]
       }
     }
   },
   "definitions": {
-    "media_serviceBatchDeleteRequest": {
+    "mediaServiceBatchDeleteRequest": {
       "type": "object",
       "properties": {
         "imageIds": {
@@ -220,7 +220,7 @@
       },
       "title": "批次刪除圖片請求"
     },
-    "media_serviceBatchDeleteResponse": {
+    "mediaServiceBatchDeleteResponse": {
       "type": "object",
       "properties": {
         "message": {
@@ -229,7 +229,7 @@
       },
       "title": "批次刪除圖片響應"
     },
-    "media_serviceClearResponse": {
+    "mediaServiceClearResponse": {
       "type": "object",
       "properties": {
         "message": {
@@ -238,7 +238,7 @@
       },
       "title": "清除暫存響應"
     },
-    "media_serviceDeleteResponse": {
+    "mediaServiceDeleteResponse": {
       "type": "object",
       "properties": {
         "message": {
@@ -247,7 +247,7 @@
       },
       "title": "刪除圖片響應"
     },
-    "media_serviceImageFormat": {
+    "mediaServiceImageFormat": {
       "type": "string",
       "enum": [
         "NOT_SUPPORT",
@@ -261,7 +261,7 @@
       "default": "NOT_SUPPORT",
       "title": "圖片格式枚舉"
     },
-    "media_serviceImageMetadata": {
+    "mediaServiceImageMetadata": {
       "type": "object",
       "properties": {
         "width": {
@@ -275,7 +275,7 @@
           "title": "高度必須大於0且小於10000"
         },
         "format": {
-          "$ref": "#/definitions/media_serviceImageFormat",
+          "$ref": "#/definitions/mediaServiceImageFormat",
           "title": "格式不能是NOT_SUPPORT"
         },
         "size": {
@@ -290,7 +290,7 @@
       },
       "title": "圖片元數據"
     },
-    "media_serviceImageResponse": {
+    "mediaServiceImageResponse": {
       "type": "object",
       "properties": {
         "uri": {
@@ -299,7 +299,7 @@
       },
       "title": "取得圖片URI響應"
     },
-    "media_serviceImageStatus": {
+    "mediaServiceImageStatus": {
       "type": "object",
       "properties": {
         "imageId": {
@@ -307,7 +307,7 @@
           "title": "必須非空且只能包含字母、數字和連字符"
         },
         "metadata": {
-          "$ref": "#/definitions/media_serviceImageMetadata",
+          "$ref": "#/definitions/mediaServiceImageMetadata",
           "title": "必須存在"
         },
         "variants": {
@@ -319,7 +319,7 @@
         }
       }
     },
-    "media_serviceSignedUrl": {
+    "mediaServiceSignedUrl": {
       "type": "object",
       "properties": {
         "imageId": {
@@ -332,7 +332,7 @@
         }
       }
     },
-    "media_serviceStatusRequest": {
+    "mediaServiceStatusRequest": {
       "type": "object",
       "properties": {
         "imageIds": {
@@ -344,24 +344,24 @@
       },
       "title": "圖片狀態請求"
     },
-    "media_serviceStatusResponse": {
+    "mediaServiceStatusResponse": {
       "type": "object",
       "properties": {
         "images": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/media_serviceImageStatus"
+            "$ref": "#/definitions/mediaServiceImageStatus"
           }
         }
       },
       "title": "圖片狀態響應"
     },
-    "media_serviceUploadImage": {
+    "mediaServiceUploadImage": {
       "type": "object",
       "properties": {
         "contentType": {
-          "$ref": "#/definitions/media_serviceImageFormat"
+          "$ref": "#/definitions/mediaServiceImageFormat"
         },
         "size": {
           "type": "string",
@@ -390,27 +390,27 @@
         }
       }
     },
-    "media_serviceUploadRequest": {
+    "mediaServiceUploadRequest": {
       "type": "object",
       "properties": {
         "images": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/media_serviceUploadImage"
+            "$ref": "#/definitions/mediaServiceUploadImage"
           }
         }
       },
       "title": "圖片上傳請求"
     },
-    "media_serviceUploadResponse": {
+    "mediaServiceUploadResponse": {
       "type": "object",
       "properties": {
         "images": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/media_serviceSignedUrl"
+            "$ref": "#/definitions/mediaServiceSignedUrl"
           }
         }
       },

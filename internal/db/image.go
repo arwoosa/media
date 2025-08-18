@@ -151,6 +151,13 @@ func (i *image) GetId() any {
 	return i.ID
 }
 
+func (i *image) SetId(id any) {
+	if oid, ok := id.(bson.ObjectID); ok {
+		i.ID = oid
+		return
+	}
+}
+
 func NewImage(opts ...imageOption) *image {
 	i := &image{
 		Index: imageCollection,

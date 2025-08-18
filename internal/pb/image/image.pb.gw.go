@@ -31,7 +31,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
-func request_MediaService_BatchUpload_0(ctx context.Context, marshaler runtime.Marshaler, client MediaServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ImageService_BatchUpload_0(ctx context.Context, marshaler runtime.Marshaler, client ImageServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq UploadRequest
 	var metadata runtime.ServerMetadata
 
@@ -44,7 +44,7 @@ func request_MediaService_BatchUpload_0(ctx context.Context, marshaler runtime.M
 
 }
 
-func local_request_MediaService_BatchUpload_0(ctx context.Context, marshaler runtime.Marshaler, server MediaServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ImageService_BatchUpload_0(ctx context.Context, marshaler runtime.Marshaler, server ImageServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq UploadRequest
 	var metadata runtime.ServerMetadata
 
@@ -57,7 +57,7 @@ func local_request_MediaService_BatchUpload_0(ctx context.Context, marshaler run
 
 }
 
-func request_MediaService_Complete_0(ctx context.Context, marshaler runtime.Marshaler, client MediaServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ImageService_Complete_0(ctx context.Context, marshaler runtime.Marshaler, client ImageServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq StatusRequest
 	var metadata runtime.ServerMetadata
 
@@ -70,7 +70,7 @@ func request_MediaService_Complete_0(ctx context.Context, marshaler runtime.Mars
 
 }
 
-func local_request_MediaService_Complete_0(ctx context.Context, marshaler runtime.Marshaler, server MediaServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ImageService_Complete_0(ctx context.Context, marshaler runtime.Marshaler, server ImageServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq StatusRequest
 	var metadata runtime.ServerMetadata
 
@@ -83,7 +83,7 @@ func local_request_MediaService_Complete_0(ctx context.Context, marshaler runtim
 
 }
 
-func request_MediaService_Clear_0(ctx context.Context, marshaler runtime.Marshaler, client MediaServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ImageService_Clear_0(ctx context.Context, marshaler runtime.Marshaler, client ImageServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClearRequest
 	var metadata runtime.ServerMetadata
 
@@ -92,7 +92,7 @@ func request_MediaService_Clear_0(ctx context.Context, marshaler runtime.Marshal
 
 }
 
-func local_request_MediaService_Clear_0(ctx context.Context, marshaler runtime.Marshaler, server MediaServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ImageService_Clear_0(ctx context.Context, marshaler runtime.Marshaler, server ImageServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClearRequest
 	var metadata runtime.ServerMetadata
 
@@ -101,7 +101,7 @@ func local_request_MediaService_Clear_0(ctx context.Context, marshaler runtime.M
 
 }
 
-func request_MediaService_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client MediaServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ImageService_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client ImageServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteRequest
 	var metadata runtime.ServerMetadata
 
@@ -127,7 +127,7 @@ func request_MediaService_Delete_0(ctx context.Context, marshaler runtime.Marsha
 
 }
 
-func local_request_MediaService_Delete_0(ctx context.Context, marshaler runtime.Marshaler, server MediaServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ImageService_Delete_0(ctx context.Context, marshaler runtime.Marshaler, server ImageServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteRequest
 	var metadata runtime.ServerMetadata
 
@@ -153,7 +153,7 @@ func local_request_MediaService_Delete_0(ctx context.Context, marshaler runtime.
 
 }
 
-func request_MediaService_BatchDelete_0(ctx context.Context, marshaler runtime.Marshaler, client MediaServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ImageService_BatchDelete_0(ctx context.Context, marshaler runtime.Marshaler, client ImageServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq BatchDeleteRequest
 	var metadata runtime.ServerMetadata
 
@@ -166,7 +166,7 @@ func request_MediaService_BatchDelete_0(ctx context.Context, marshaler runtime.M
 
 }
 
-func local_request_MediaService_BatchDelete_0(ctx context.Context, marshaler runtime.Marshaler, server MediaServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ImageService_BatchDelete_0(ctx context.Context, marshaler runtime.Marshaler, server ImageServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq BatchDeleteRequest
 	var metadata runtime.ServerMetadata
 
@@ -180,10 +180,10 @@ func local_request_MediaService_BatchDelete_0(ctx context.Context, marshaler run
 }
 
 var (
-	filter_MediaService_GetImageURI_0 = &utilities.DoubleArray{Encoding: map[string]int{"id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_ImageService_GetImageURI_0 = &utilities.DoubleArray{Encoding: map[string]int{"id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_MediaService_GetImageURI_0(ctx context.Context, marshaler runtime.Marshaler, client MediaServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ImageService_GetImageURI_0(ctx context.Context, marshaler runtime.Marshaler, client ImageServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ImageRequest
 	var metadata runtime.ServerMetadata
 
@@ -207,7 +207,7 @@ func request_MediaService_GetImageURI_0(ctx context.Context, marshaler runtime.M
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_MediaService_GetImageURI_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ImageService_GetImageURI_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -216,7 +216,7 @@ func request_MediaService_GetImageURI_0(ctx context.Context, marshaler runtime.M
 
 }
 
-func local_request_MediaService_GetImageURI_0(ctx context.Context, marshaler runtime.Marshaler, server MediaServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ImageService_GetImageURI_0(ctx context.Context, marshaler runtime.Marshaler, server ImageServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ImageRequest
 	var metadata runtime.ServerMetadata
 
@@ -240,7 +240,7 @@ func local_request_MediaService_GetImageURI_0(ctx context.Context, marshaler run
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_MediaService_GetImageURI_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ImageService_GetImageURI_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -249,13 +249,13 @@ func local_request_MediaService_GetImageURI_0(ctx context.Context, marshaler run
 
 }
 
-// RegisterMediaServiceHandlerServer registers the http handlers for service MediaService to "mux".
-// UnaryRPC     :call MediaServiceServer directly.
+// RegisterImageServiceHandlerServer registers the http handlers for service ImageService to "mux".
+// UnaryRPC     :call ImageServiceServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
-// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterMediaServiceHandlerFromEndpoint instead.
-func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server MediaServiceServer) error {
+// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterImageServiceHandlerFromEndpoint instead.
+func RegisterImageServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server ImageServiceServer) error {
 
-	mux.Handle("POST", pattern_MediaService_BatchUpload_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ImageService_BatchUpload_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -263,12 +263,12 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/media_service.MediaService/BatchUpload", runtime.WithHTTPPathPattern("/media/image/signed-url/_batch"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/mediaService.ImageService/BatchUpload", runtime.WithHTTPPathPattern("/media/image/signed-url/_batch"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_MediaService_BatchUpload_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ImageService_BatchUpload_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -276,11 +276,11 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 			return
 		}
 
-		forward_MediaService_BatchUpload_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_BatchUpload_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_MediaService_Complete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ImageService_Complete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -288,12 +288,12 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/media_service.MediaService/Complete", runtime.WithHTTPPathPattern("/media/image/_complete"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/mediaService.ImageService/Complete", runtime.WithHTTPPathPattern("/media/image/_complete"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_MediaService_Complete_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ImageService_Complete_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -301,11 +301,11 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 			return
 		}
 
-		forward_MediaService_Complete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_Complete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_MediaService_Clear_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_ImageService_Clear_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -313,12 +313,12 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/media_service.MediaService/Clear", runtime.WithHTTPPathPattern("/media/image/signed-url"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/mediaService.ImageService/Clear", runtime.WithHTTPPathPattern("/media/image/signed-url"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_MediaService_Clear_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ImageService_Clear_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -326,11 +326,11 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 			return
 		}
 
-		forward_MediaService_Clear_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_Clear_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_MediaService_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_ImageService_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -338,12 +338,12 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/media_service.MediaService/Delete", runtime.WithHTTPPathPattern("/media/image/{image_id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/mediaService.ImageService/Delete", runtime.WithHTTPPathPattern("/media/image/{image_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_MediaService_Delete_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ImageService_Delete_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -351,11 +351,11 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 			return
 		}
 
-		forward_MediaService_Delete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_Delete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_MediaService_BatchDelete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ImageService_BatchDelete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -363,12 +363,12 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/media_service.MediaService/BatchDelete", runtime.WithHTTPPathPattern("/media/image/_batch_delete"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/mediaService.ImageService/BatchDelete", runtime.WithHTTPPathPattern("/media/image/_batch_delete"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_MediaService_BatchDelete_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ImageService_BatchDelete_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -376,11 +376,11 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 			return
 		}
 
-		forward_MediaService_BatchDelete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_BatchDelete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_MediaService_GetImageURI_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ImageService_GetImageURI_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -388,12 +388,12 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/media_service.MediaService/GetImageURI", runtime.WithHTTPPathPattern("/media/image/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/mediaService.ImageService/GetImageURI", runtime.WithHTTPPathPattern("/media/image/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_MediaService_GetImageURI_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ImageService_GetImageURI_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -401,16 +401,16 @@ func RegisterMediaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 			return
 		}
 
-		forward_MediaService_GetImageURI_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_GetImageURI_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
 	return nil
 }
 
-// RegisterMediaServiceHandlerFromEndpoint is same as RegisterMediaServiceHandler but
+// RegisterImageServiceHandlerFromEndpoint is same as RegisterImageServiceHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterMediaServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterImageServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.DialContext(ctx, endpoint, opts...)
 	if err != nil {
 		return err
@@ -430,151 +430,151 @@ func RegisterMediaServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.S
 		}()
 	}()
 
-	return RegisterMediaServiceHandler(ctx, mux, conn)
+	return RegisterImageServiceHandler(ctx, mux, conn)
 }
 
-// RegisterMediaServiceHandler registers the http handlers for service MediaService to "mux".
+// RegisterImageServiceHandler registers the http handlers for service ImageService to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterMediaServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterMediaServiceHandlerClient(ctx, mux, NewMediaServiceClient(conn))
+func RegisterImageServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	return RegisterImageServiceHandlerClient(ctx, mux, NewImageServiceClient(conn))
 }
 
-// RegisterMediaServiceHandlerClient registers the http handlers for service MediaService
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "MediaServiceClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "MediaServiceClient"
+// RegisterImageServiceHandlerClient registers the http handlers for service ImageService
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "ImageServiceClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "ImageServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "MediaServiceClient" to call the correct interceptors.
-func RegisterMediaServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client MediaServiceClient) error {
+// "ImageServiceClient" to call the correct interceptors.
+func RegisterImageServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client ImageServiceClient) error {
 
-	mux.Handle("POST", pattern_MediaService_BatchUpload_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ImageService_BatchUpload_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/media_service.MediaService/BatchUpload", runtime.WithHTTPPathPattern("/media/image/signed-url/_batch"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/mediaService.ImageService/BatchUpload", runtime.WithHTTPPathPattern("/media/image/signed-url/_batch"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MediaService_BatchUpload_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ImageService_BatchUpload_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MediaService_BatchUpload_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_BatchUpload_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_MediaService_Complete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ImageService_Complete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/media_service.MediaService/Complete", runtime.WithHTTPPathPattern("/media/image/_complete"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/mediaService.ImageService/Complete", runtime.WithHTTPPathPattern("/media/image/_complete"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MediaService_Complete_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ImageService_Complete_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MediaService_Complete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_Complete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_MediaService_Clear_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_ImageService_Clear_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/media_service.MediaService/Clear", runtime.WithHTTPPathPattern("/media/image/signed-url"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/mediaService.ImageService/Clear", runtime.WithHTTPPathPattern("/media/image/signed-url"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MediaService_Clear_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ImageService_Clear_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MediaService_Clear_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_Clear_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_MediaService_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_ImageService_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/media_service.MediaService/Delete", runtime.WithHTTPPathPattern("/media/image/{image_id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/mediaService.ImageService/Delete", runtime.WithHTTPPathPattern("/media/image/{image_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MediaService_Delete_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ImageService_Delete_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MediaService_Delete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_Delete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_MediaService_BatchDelete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ImageService_BatchDelete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/media_service.MediaService/BatchDelete", runtime.WithHTTPPathPattern("/media/image/_batch_delete"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/mediaService.ImageService/BatchDelete", runtime.WithHTTPPathPattern("/media/image/_batch_delete"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MediaService_BatchDelete_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ImageService_BatchDelete_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MediaService_BatchDelete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_BatchDelete_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_MediaService_GetImageURI_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ImageService_GetImageURI_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/media_service.MediaService/GetImageURI", runtime.WithHTTPPathPattern("/media/image/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/mediaService.ImageService/GetImageURI", runtime.WithHTTPPathPattern("/media/image/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MediaService_GetImageURI_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ImageService_GetImageURI_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MediaService_GetImageURI_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ImageService_GetImageURI_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -582,29 +582,29 @@ func RegisterMediaServiceHandlerClient(ctx context.Context, mux *runtime.ServeMu
 }
 
 var (
-	pattern_MediaService_BatchUpload_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"media", "image", "signed-url", "_batch"}, ""))
+	pattern_ImageService_BatchUpload_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"media", "image", "signed-url", "_batch"}, ""))
 
-	pattern_MediaService_Complete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"media", "image", "_complete"}, ""))
+	pattern_ImageService_Complete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"media", "image", "_complete"}, ""))
 
-	pattern_MediaService_Clear_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"media", "image", "signed-url"}, ""))
+	pattern_ImageService_Clear_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"media", "image", "signed-url"}, ""))
 
-	pattern_MediaService_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"media", "image", "image_id"}, ""))
+	pattern_ImageService_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"media", "image", "image_id"}, ""))
 
-	pattern_MediaService_BatchDelete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"media", "image", "_batch_delete"}, ""))
+	pattern_ImageService_BatchDelete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"media", "image", "_batch_delete"}, ""))
 
-	pattern_MediaService_GetImageURI_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"media", "image", "id"}, ""))
+	pattern_ImageService_GetImageURI_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"media", "image", "id"}, ""))
 )
 
 var (
-	forward_MediaService_BatchUpload_0 = runtime.ForwardResponseMessage
+	forward_ImageService_BatchUpload_0 = runtime.ForwardResponseMessage
 
-	forward_MediaService_Complete_0 = runtime.ForwardResponseMessage
+	forward_ImageService_Complete_0 = runtime.ForwardResponseMessage
 
-	forward_MediaService_Clear_0 = runtime.ForwardResponseMessage
+	forward_ImageService_Clear_0 = runtime.ForwardResponseMessage
 
-	forward_MediaService_Delete_0 = runtime.ForwardResponseMessage
+	forward_ImageService_Delete_0 = runtime.ForwardResponseMessage
 
-	forward_MediaService_BatchDelete_0 = runtime.ForwardResponseMessage
+	forward_ImageService_BatchDelete_0 = runtime.ForwardResponseMessage
 
-	forward_MediaService_GetImageURI_0 = runtime.ForwardResponseMessage
+	forward_ImageService_GetImageURI_0 = runtime.ForwardResponseMessage
 )

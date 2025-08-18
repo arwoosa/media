@@ -20,19 +20,19 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	MediaService_BatchUpload_FullMethodName    = "/media_service.MediaService/BatchUpload"
-	MediaService_Complete_FullMethodName       = "/media_service.MediaService/Complete"
-	MediaService_Clear_FullMethodName          = "/media_service.MediaService/Clear"
-	MediaService_Delete_FullMethodName         = "/media_service.MediaService/Delete"
-	MediaService_BatchDelete_FullMethodName    = "/media_service.MediaService/BatchDelete"
-	MediaService_GetImageURI_FullMethodName    = "/media_service.MediaService/GetImageURI"
-	MediaService_SyncImageCount_FullMethodName = "/media_service.MediaService/SyncImageCount"
+	ImageService_BatchUpload_FullMethodName    = "/mediaService.ImageService/BatchUpload"
+	ImageService_Complete_FullMethodName       = "/mediaService.ImageService/Complete"
+	ImageService_Clear_FullMethodName          = "/mediaService.ImageService/Clear"
+	ImageService_Delete_FullMethodName         = "/mediaService.ImageService/Delete"
+	ImageService_BatchDelete_FullMethodName    = "/mediaService.ImageService/BatchDelete"
+	ImageService_GetImageURI_FullMethodName    = "/mediaService.ImageService/GetImageURI"
+	ImageService_SyncImageCount_FullMethodName = "/mediaService.ImageService/SyncImageCount"
 )
 
-// MediaServiceClient is the client API for MediaService service.
+// ImageServiceClient is the client API for ImageService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type MediaServiceClient interface {
+type ImageServiceClient interface {
 	// 批次取得上傳URL
 	BatchUpload(ctx context.Context, in *UploadRequest, opts ...grpc.CallOption) (*UploadResponse, error)
 	// 檢查圖片上傳狀態
@@ -49,81 +49,81 @@ type MediaServiceClient interface {
 	SyncImageCount(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
-type mediaServiceClient struct {
+type imageServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewMediaServiceClient(cc grpc.ClientConnInterface) MediaServiceClient {
-	return &mediaServiceClient{cc}
+func NewImageServiceClient(cc grpc.ClientConnInterface) ImageServiceClient {
+	return &imageServiceClient{cc}
 }
 
-func (c *mediaServiceClient) BatchUpload(ctx context.Context, in *UploadRequest, opts ...grpc.CallOption) (*UploadResponse, error) {
+func (c *imageServiceClient) BatchUpload(ctx context.Context, in *UploadRequest, opts ...grpc.CallOption) (*UploadResponse, error) {
 	out := new(UploadResponse)
-	err := c.cc.Invoke(ctx, MediaService_BatchUpload_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ImageService_BatchUpload_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mediaServiceClient) Complete(ctx context.Context, in *StatusRequest, opts ...grpc.CallOption) (*StatusResponse, error) {
+func (c *imageServiceClient) Complete(ctx context.Context, in *StatusRequest, opts ...grpc.CallOption) (*StatusResponse, error) {
 	out := new(StatusResponse)
-	err := c.cc.Invoke(ctx, MediaService_Complete_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ImageService_Complete_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mediaServiceClient) Clear(ctx context.Context, in *ClearRequest, opts ...grpc.CallOption) (*ClearResponse, error) {
+func (c *imageServiceClient) Clear(ctx context.Context, in *ClearRequest, opts ...grpc.CallOption) (*ClearResponse, error) {
 	out := new(ClearResponse)
-	err := c.cc.Invoke(ctx, MediaService_Clear_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ImageService_Clear_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mediaServiceClient) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error) {
+func (c *imageServiceClient) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error) {
 	out := new(DeleteResponse)
-	err := c.cc.Invoke(ctx, MediaService_Delete_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ImageService_Delete_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mediaServiceClient) BatchDelete(ctx context.Context, in *BatchDeleteRequest, opts ...grpc.CallOption) (*BatchDeleteResponse, error) {
+func (c *imageServiceClient) BatchDelete(ctx context.Context, in *BatchDeleteRequest, opts ...grpc.CallOption) (*BatchDeleteResponse, error) {
 	out := new(BatchDeleteResponse)
-	err := c.cc.Invoke(ctx, MediaService_BatchDelete_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ImageService_BatchDelete_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mediaServiceClient) GetImageURI(ctx context.Context, in *ImageRequest, opts ...grpc.CallOption) (*ImageResponse, error) {
+func (c *imageServiceClient) GetImageURI(ctx context.Context, in *ImageRequest, opts ...grpc.CallOption) (*ImageResponse, error) {
 	out := new(ImageResponse)
-	err := c.cc.Invoke(ctx, MediaService_GetImageURI_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ImageService_GetImageURI_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mediaServiceClient) SyncImageCount(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *imageServiceClient) SyncImageCount(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, MediaService_SyncImageCount_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ImageService_SyncImageCount_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// MediaServiceServer is the server API for MediaService service.
-// All implementations must embed UnimplementedMediaServiceServer
+// ImageServiceServer is the server API for ImageService service.
+// All implementations must embed UnimplementedImageServiceServer
 // for forward compatibility
-type MediaServiceServer interface {
+type ImageServiceServer interface {
 	// 批次取得上傳URL
 	BatchUpload(context.Context, *UploadRequest) (*UploadResponse, error)
 	// 檢查圖片上傳狀態
@@ -138,207 +138,207 @@ type MediaServiceServer interface {
 	GetImageURI(context.Context, *ImageRequest) (*ImageResponse, error)
 	// 同步圖片計數(Cron Job使用)
 	SyncImageCount(context.Context, *emptypb.Empty) (*emptypb.Empty, error)
-	mustEmbedUnimplementedMediaServiceServer()
+	mustEmbedUnimplementedImageServiceServer()
 }
 
-// UnimplementedMediaServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedMediaServiceServer struct {
+// UnimplementedImageServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedImageServiceServer struct {
 }
 
-func (UnimplementedMediaServiceServer) BatchUpload(context.Context, *UploadRequest) (*UploadResponse, error) {
+func (UnimplementedImageServiceServer) BatchUpload(context.Context, *UploadRequest) (*UploadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BatchUpload not implemented")
 }
-func (UnimplementedMediaServiceServer) Complete(context.Context, *StatusRequest) (*StatusResponse, error) {
+func (UnimplementedImageServiceServer) Complete(context.Context, *StatusRequest) (*StatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Complete not implemented")
 }
-func (UnimplementedMediaServiceServer) Clear(context.Context, *ClearRequest) (*ClearResponse, error) {
+func (UnimplementedImageServiceServer) Clear(context.Context, *ClearRequest) (*ClearResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Clear not implemented")
 }
-func (UnimplementedMediaServiceServer) Delete(context.Context, *DeleteRequest) (*DeleteResponse, error) {
+func (UnimplementedImageServiceServer) Delete(context.Context, *DeleteRequest) (*DeleteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedMediaServiceServer) BatchDelete(context.Context, *BatchDeleteRequest) (*BatchDeleteResponse, error) {
+func (UnimplementedImageServiceServer) BatchDelete(context.Context, *BatchDeleteRequest) (*BatchDeleteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BatchDelete not implemented")
 }
-func (UnimplementedMediaServiceServer) GetImageURI(context.Context, *ImageRequest) (*ImageResponse, error) {
+func (UnimplementedImageServiceServer) GetImageURI(context.Context, *ImageRequest) (*ImageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetImageURI not implemented")
 }
-func (UnimplementedMediaServiceServer) SyncImageCount(context.Context, *emptypb.Empty) (*emptypb.Empty, error) {
+func (UnimplementedImageServiceServer) SyncImageCount(context.Context, *emptypb.Empty) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SyncImageCount not implemented")
 }
-func (UnimplementedMediaServiceServer) mustEmbedUnimplementedMediaServiceServer() {}
+func (UnimplementedImageServiceServer) mustEmbedUnimplementedImageServiceServer() {}
 
-// UnsafeMediaServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to MediaServiceServer will
+// UnsafeImageServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ImageServiceServer will
 // result in compilation errors.
-type UnsafeMediaServiceServer interface {
-	mustEmbedUnimplementedMediaServiceServer()
+type UnsafeImageServiceServer interface {
+	mustEmbedUnimplementedImageServiceServer()
 }
 
-func RegisterMediaServiceServer(s grpc.ServiceRegistrar, srv MediaServiceServer) {
-	s.RegisterService(&MediaService_ServiceDesc, srv)
+func RegisterImageServiceServer(s grpc.ServiceRegistrar, srv ImageServiceServer) {
+	s.RegisterService(&ImageService_ServiceDesc, srv)
 }
 
-func _MediaService_BatchUpload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ImageService_BatchUpload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UploadRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MediaServiceServer).BatchUpload(ctx, in)
+		return srv.(ImageServiceServer).BatchUpload(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MediaService_BatchUpload_FullMethodName,
+		FullMethod: ImageService_BatchUpload_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MediaServiceServer).BatchUpload(ctx, req.(*UploadRequest))
+		return srv.(ImageServiceServer).BatchUpload(ctx, req.(*UploadRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MediaService_Complete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ImageService_Complete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MediaServiceServer).Complete(ctx, in)
+		return srv.(ImageServiceServer).Complete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MediaService_Complete_FullMethodName,
+		FullMethod: ImageService_Complete_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MediaServiceServer).Complete(ctx, req.(*StatusRequest))
+		return srv.(ImageServiceServer).Complete(ctx, req.(*StatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MediaService_Clear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ImageService_Clear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClearRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MediaServiceServer).Clear(ctx, in)
+		return srv.(ImageServiceServer).Clear(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MediaService_Clear_FullMethodName,
+		FullMethod: ImageService_Clear_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MediaServiceServer).Clear(ctx, req.(*ClearRequest))
+		return srv.(ImageServiceServer).Clear(ctx, req.(*ClearRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MediaService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ImageService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MediaServiceServer).Delete(ctx, in)
+		return srv.(ImageServiceServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MediaService_Delete_FullMethodName,
+		FullMethod: ImageService_Delete_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MediaServiceServer).Delete(ctx, req.(*DeleteRequest))
+		return srv.(ImageServiceServer).Delete(ctx, req.(*DeleteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MediaService_BatchDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ImageService_BatchDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BatchDeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MediaServiceServer).BatchDelete(ctx, in)
+		return srv.(ImageServiceServer).BatchDelete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MediaService_BatchDelete_FullMethodName,
+		FullMethod: ImageService_BatchDelete_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MediaServiceServer).BatchDelete(ctx, req.(*BatchDeleteRequest))
+		return srv.(ImageServiceServer).BatchDelete(ctx, req.(*BatchDeleteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MediaService_GetImageURI_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ImageService_GetImageURI_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ImageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MediaServiceServer).GetImageURI(ctx, in)
+		return srv.(ImageServiceServer).GetImageURI(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MediaService_GetImageURI_FullMethodName,
+		FullMethod: ImageService_GetImageURI_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MediaServiceServer).GetImageURI(ctx, req.(*ImageRequest))
+		return srv.(ImageServiceServer).GetImageURI(ctx, req.(*ImageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MediaService_SyncImageCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ImageService_SyncImageCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MediaServiceServer).SyncImageCount(ctx, in)
+		return srv.(ImageServiceServer).SyncImageCount(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MediaService_SyncImageCount_FullMethodName,
+		FullMethod: ImageService_SyncImageCount_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MediaServiceServer).SyncImageCount(ctx, req.(*emptypb.Empty))
+		return srv.(ImageServiceServer).SyncImageCount(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// MediaService_ServiceDesc is the grpc.ServiceDesc for MediaService service.
+// ImageService_ServiceDesc is the grpc.ServiceDesc for ImageService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var MediaService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "media_service.MediaService",
-	HandlerType: (*MediaServiceServer)(nil),
+var ImageService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mediaService.ImageService",
+	HandlerType: (*ImageServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "BatchUpload",
-			Handler:    _MediaService_BatchUpload_Handler,
+			Handler:    _ImageService_BatchUpload_Handler,
 		},
 		{
 			MethodName: "Complete",
-			Handler:    _MediaService_Complete_Handler,
+			Handler:    _ImageService_Complete_Handler,
 		},
 		{
 			MethodName: "Clear",
-			Handler:    _MediaService_Clear_Handler,
+			Handler:    _ImageService_Clear_Handler,
 		},
 		{
 			MethodName: "Delete",
-			Handler:    _MediaService_Delete_Handler,
+			Handler:    _ImageService_Delete_Handler,
 		},
 		{
 			MethodName: "BatchDelete",
-			Handler:    _MediaService_BatchDelete_Handler,
+			Handler:    _ImageService_BatchDelete_Handler,
 		},
 		{
 			MethodName: "GetImageURI",
-			Handler:    _MediaService_GetImageURI_Handler,
+			Handler:    _ImageService_GetImageURI_Handler,
 		},
 		{
 			MethodName: "SyncImageCount",
-			Handler:    _MediaService_SyncImageCount_Handler,
+			Handler:    _ImageService_SyncImageCount_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
