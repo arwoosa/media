@@ -1,4 +1,4 @@
-service:
+services:
   media:
     image: sjc.vultrcr.com/oosa/media:dev
     container_name: media
