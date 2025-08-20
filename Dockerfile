@@ -1,6 +1,7 @@
 # Stage 1: Build the Go binary
 FROM golang:1.24-alpine AS builder
 
+RUN apk add --no-cache ca-certificates
 WORKDIR /app
 
 # Copy the rest of the source code
@@ -22,6 +23,7 @@ WORKDIR /app
 
 # Copy the built binary from the builder stage
 COPY --from=builder /app/media .
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
 # Copy the proto files
 COPY proto /app/proto
